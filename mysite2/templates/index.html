@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $("p").click(function(){
+  $(this).hide();
+  });
+});
+</script>
+
+<div style="margin:0 auto;position:absolute;left:50%;top:50%;margin-left:-250px;margin-top:-">
+
+
+<form action="s/" method="get">
+    {% csrf_token %}
+<input type="text" name="wd" value="{{wd}}">
+    <input type="checkbox" name="baidu" checked>百度
+    <input type="checkbox" name="google">google
+    <input type="submit" value="查询">
+     <input type="button" value="jquery" id="myfield">
+    </form>
+    </div>
+        <p>If you click on me, I will disappear.</p>
+
+        <div id="myDiv"><h2>Let AJAX change this text</h2></div>
+        <div id="div"></div>
+        <input type="button" id="button" value="button1">
+<button id="b01" type="button">Change Content</button>
+<script type="text/javascript">
+$(function () {
+        $('#appdp').bind("click",function() {
+              alert('aaa')
+        });
+});
+
+</script>
+<div> <div id="appdp">ttttt</div>
+    </div><br>
+
+<div id="bbb-com"><b>www.app.com.cn</b></div>
+    </div><br>
+<script type="text/javascript">
+$(function () {
+        $('#bbb-com').bind("click",function() {
+              alert('aaa')
+        });
+});
+</script>
+
+
+{% endblock %}

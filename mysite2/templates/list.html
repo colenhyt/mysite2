@@ -1,0 +1,59 @@
+<html>
+<meta http-equiv="content-type" content="text/html;charset=gb2313"/>
+<script language="JavaScript" type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+<body>
+<form action="../s/" method="get">query:
+{% csrf_token %}
+<input type="text" name="wd" value="{{wd}}">
+    <input type="submit" value="查询">
+    </form>
+ {% for item in resultitems %}
+<div> <a href="http://{{item.url}}"><b><span id="tt{{item.id}}"></span></b></a>
+    <div>
+        简要：<span id="desc{{item.id}}"></span><br>
+        alexa:<span id="al{{item.id}}"></span>
+        pr:<span id="pr{{item.id}}"></span>
+        百度权重:<span id="bd{{item.id}}"></span>
+    </div>
+    </div><br>
+<script type="text/javascript">
+$(function () {
+
+ $.ajax({url:"../ajax/?q=sum&siteUrl={{item.url}}",async:true,success:function(data) {
+    strs = data.split(",");
+    $("#tt{{item.id}}").html(strs[0]);
+    $("#desc{{item.id}}").html(strs[1]);
+    }
+ });
+
+ $.ajax({url:"../ajax/?q=alexa&siteUrl={{item.url}}",async:true,success:function(data) {
+    $("#al{{item.id}}").html(data);
+    }
+ });
+
+ $.ajax({url:"../ajax/?q=pr&siteUrl={{item.url}}",async:true,success:function(data) {
+    $("#pr{{item.id}}").html(data);
+    }
+ });
+
+ $.ajax({url:"../ajax/?q=baidurank&siteUrl={{item.url}}",async:true,success:function(data) {
+    $("#bd{{item.id}}").html(data);
+    }
+ });
+});
+</script>
+{% endfor %}
+
+<div>
+
+ {% for page in searchpages %}
+<span> <a href="../{{page.url}}"><b>{{page.name}}</b></a>
+    </span>
+{% endfor %}
+</div>
+<form action="../s/" method="get">
+{% csrf_token %}
+<input type="text" name="wd" value="{{wd}}">
+    <input type="submit" value="查询">
+    </form>
+</body></html>
