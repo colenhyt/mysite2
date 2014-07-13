@@ -1,9 +1,6 @@
 from mysite2.sitepage import *
 
 
-def aaa:
-    return 0
-
 class DataMgr:
     def __init__(self):
         self.alexaData = {}
