@@ -57,3 +57,5 @@ class DataMgr:
         return sum
 
 g_dataMgr = DataMgr()
+
+print 'aaa'
