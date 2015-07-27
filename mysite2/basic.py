@@ -15,10 +15,11 @@ def downloadPage(url):
  buf = cStringIO.StringIO()
  try:
   c = pycurl.Curl()
-  c.setopt(c.URL,url)
+  uu = url
+  c.setopt(c.URL,uu)
   c.setopt(c.WRITEFUNCTION,buf.write)
-  c.setopt(c.CONNECTTIMEOUT,15)
-  c.setopt(c.TIMEOUT,8)
+  c.setopt(c.CONNECTTIMEOUT,55)
+  c.setopt(c.TIMEOUT,80)
   c.perform()
   return buf.getvalue()
  except Exception,ex:
@@ -30,3 +31,6 @@ def getStringFile(strFileName):
  strFile = fileHandle.read()
  fileHandle.close()
  return strFile
+
+aa = downloadPage("https://www.baidu.com")
+print 'aaeee'+aa

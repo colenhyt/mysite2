@@ -5,6 +5,7 @@ class DataMgr:
     def __init__(self):
         self.alexaData = {}
         self.prData = {}
+        self.aa = {}
         self.baiduRankData = {}
         self.siteSumData = {}
 

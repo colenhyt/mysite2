@@ -18,8 +18,7 @@ class BaiduPage:
     def parse(self,queryWord,pageCount = 5):
         i = 0
         while (len(self.itemUrls)<pageCount):
-            self.url = "http://www.baidu.com/s?wd=" + queryWord + "&pn="
-            self.url = "%s%d"%(self.url,i)
+            self.url = "http://www.baidu.com/s?wd=%s&pn=%d"%(queryWord,i)
             htmlContent = downloadPage(self.url)
             self.findItemUrls(htmlContent)
             i += 10
